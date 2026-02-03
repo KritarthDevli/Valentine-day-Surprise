@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>She Said Yes 💖</title>
+    <link rel="stylesheet" href="yes.css" />
+  </head>
+
+  <body>
+    <div class="wrap">
+      <header class="top">
+        <h1>She said <span class="yes">YES</span> 💖</h1>
+        <p class="sub">Valentine accepted. Heart = committed ✅</p>
+      </header>
+
+      <section class="card">
+        <h2>THIS FOR MY VALENTINE</h2>
+        <p id="shayari" class="shayari"></p>
+
+        <div class="controls">
+          <button id="prevBtn" class="btn">← Prev</button>
+          <button id="nextBtn" class="btn">Next →</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Her Photos ✨</h2>
+        <p class="hint">
+          Replace <code>girl1.jpg</code>, <code>girl2.jpg</code>… with your own images in the same folder.
+        </p>
+
+        <div class="grid">
+          <img src="girl1.jpg" alt="Photo 1" />
+          <img src="girl2.jpg" alt="Photo 2" />
+          <img src="girl3.jpg" alt="Photo 3" />
+          <img src="girl4.webp" alt="Photo 4" />
+        </div>
+      </section>
+
+      <footer class="foot">
+        <button id="soonBtn" class="btn ghost">See You Soon, Love</button>
+        <button id="backBtn" class="btn ghost">Back To Letter</button>
+      </footer>
+    </div>
+
+    <script>
+      const shayariLines = [
+        "You were my favorite thought… now you’re my favorite plan. 💖",
+        "I didn’t look for love—then you smiled, and my heart compiled. ✅",
+        "If love had a destination, it would be you—every time. 💘",
+        "You said yes, and suddenly everything feels softer and brighter. ✨",
+        "My heart found its home… and it’s spelled Y-O-U. 🫶",
+        "New commit: ‘Valentine = true’ — pushed to forever branch. 😉"
+      ];
+
+      let i = 0;
+
+      const shayariEl = document.getElementById("shayari");
+      const prevBtn = document.getElementById("prevBtn");
+      const nextBtn = document.getElementById("nextBtn");
+      const backBtn = document.getElementById("backBtn");
+      const soonBtn = document.getElementById("soonBtn");
+
+      function render() {
+        shayariEl.textContent = shayariLines[i];
+      }
+
+      prevBtn.addEventListener("click", () => {
+        i = (i - 1 + shayariLines.length) % shayariLines.length;
+        render();
+      });
+
+      nextBtn.addEventListener("click", () => {
+        i = (i + 1) % shayariLines.length;
+        render();
+      });
+
+      // ✅ BACK TO LETTER → index(3).html
+      backBtn.addEventListener("click", () => {
+        window.location.href = "index (3).html";
+      });
+
+      soonBtn.addEventListener("click", () => {
+        alert("See you soon, love 💖");
+      });
+
+      render();
+    </script>
+
+    <style>
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: Georgia, "Times New Roman", Times, serif;
+        display: flex;
+        justify-content: center;
+        padding: 18px;
+        background: #fff0f6;
+      }
+
+      .wrap {
+        width: min(900px, 100%);
+        display: grid;
+        gap: 14px;
+      }
+
+      .top {
+        text-align: center;
+        padding: 12px 10px;
+      }
+
+      .top h1 {
+        margin: 0;
+        font-size: clamp(1.6rem, 4.5vw, 2.4rem);
+      }
+
+      .yes {
+        color: #d1005a;
+      }
+
+      .sub {
+        margin: 8px 0 0;
+        opacity: 0.8;
+      }
+
+      .card {
+        background: rgba(255,255,255,0.85);
+        border: 1px solid rgba(0,0,0,0.08);
+        border-radius: 14px;
+        padding: 14px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+      }
+
+      .card h2 {
+        margin: 0 0 10px;
+        font-size: 1.1rem;
+      }
+
+      .shayari {
+        margin: 0;
+        padding: 14px;
+        border-radius: 12px;
+        background: #ffffff;
+        border: 1px dashed rgba(0,0,0,0.15);
+        font-size: clamp(1rem, 3.2vw, 1.15rem);
+        line-height: 1.55;
+      }
+
+      .controls {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        margin-top: 12px;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        padding: 10px 14px;
+        border: 0;
+        border-radius: 12px;
+        cursor: pointer;
+        background: #ff4d88;
+        color: #fff;
+        font-weight: 700;
+      }
+
+      .btn:active { transform: scale(0.98); }
+
+      .ghost {
+        background: transparent;
+        color: #d1005a;
+        border: 1px solid rgba(209,0,90,0.35);
+      }
+
+      .hint {
+        margin: 0 0 10px;
+        opacity: 0.8;
+        font-size: 0.95rem;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+      }
+
+      .grid img {
+        width: 100%;
+        height: 170px;
+        object-fit: cover;
+        border-radius: 12px;
+        border: 1px solid rgba(0,0,0,0.08);
+      }
+
+      .foot {
+        display: flex;
+        justify-content: center;
+        padding-bottom: 10px;
+        gap: 10px;
+      }
+
+      @media (max-width: 700px) {
+        .grid { grid-template-columns: repeat(2, 1fr); }
+        .grid img { height: 150px; }
+      }
+    </style>
+  </body>
+</html>
